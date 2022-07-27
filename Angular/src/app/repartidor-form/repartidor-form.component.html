@@ -1,0 +1,92 @@
+<div class="container" ALIGN="right" >
+    <button style="margin:10px" type="button" class="btn btn-dark"  routerLink= "/login" (click)=cerrarSesion() >Cerrar Sesion</button>
+</div>
+<div class="container">
+    <!--Barra de navegacion-->
+    <nav class="navbar navbar-dark bg-dark" style=" border-radius: 15px;">
+        <a class="nav-link" style="color: aliceblue;" routerLink= "/dashboard">Inicio</a>
+        <a class="nav-link" style="color: aliceblue;" routerLink= "/pedidos">Pedidos</a>
+        <a class="nav-link" style="color: aliceblue;" routerLink= "/repartidores">Repartidores</a>
+        <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarRepartidor">Agregar Repartidor</a>
+        <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarZona">Agregar Zona</a>
+        <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarVehiculo">Agregar Vehiculo</a>
+    </nav>
+</div>  
+<div class="container">
+    <form (ngSubmit)="onSubmit(repartidorForm)" #repartidorForm="ngForm">
+
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre"
+            required
+            [(ngModel)]="repartidor.nombre" name="nombre">
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input type="text" class="form-control" id="apellido"
+            required
+            [(ngModel)]="repartidor.apellido" name="apellido">
+        </div>
+        <div class="form-group">
+            <label for="rol">Rol</label>
+            <select class="form-select" aria-label="Rol" id="rol" name="rol" [(ngModel)]="repartidor.rol" required>
+                <option *ngFor='let rol of roles' [value]="rol.nombre">{{rol.nombre}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="vehiculo">Vehiculo</label>
+            <select class="form-select" aria-label="Vehiculo" id="vehiculo" name="vehiculo" [(ngModel)]="repartidor.vehiculo" required>
+                <option *ngFor='let vehiculo of vehiculos' [value]="vehiculo.tipo">{{vehiculo.tipo}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="fechaN">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="fechaN"
+            required
+            [(ngModel)]="repartidor.fechaN" name="fechaN">
+        </div>
+        <div class="form-group">
+            <label for="direccion">Direccion</label>
+            <input type="text" class="form-control" id="direccion"
+            required
+            [(ngModel)]="repartidor.direccion" name="direccion">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email"
+            required
+            [(ngModel)]="repartidor.email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="dni">Dni</label>
+            <input type="text" class="form-control" id="dni"
+            required
+            [(ngModel)]="repartidor.dni" name="dni">
+        </div>
+        <div class="form-group">
+            <label for="contrasena">Contraseña</label>
+            <input type="text" class="form-control" id="contrasena"
+            required
+            [(ngModel)]="repartidor.contrasena" name="contrasena">
+        </div>
+        <div class="form-group">
+            <label for="estado">Estado</label>
+            <select class="form-select" aria-label="EstadoRepartidor" id="estado" name="estado" [(ngModel)]="repartidor.estado" required>
+                <option *ngFor='let estado of estados' [value]="estado.nombre">{{estado.nombre}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="zona">Zona en la que se encuentra:</label>
+            <select class="form-select" aria-label="zona" id="zona" name="zona" [(ngModel)]="repartidor.zona" required>
+                <option *ngFor='let zona of zonas' [value]="zona.barrio">{{zona.barrio}}</option>
+            </select>
+        </div>
+
+        <button style="margin:10px" type="submit" class="btn btn-success"
+        [disabled]="!repartidorForm.form.valid">Guardar</button>
+
+    </form>
+
+    <button style="margin:10px" type="button" class="btn btn-dark" (click)="goBack()">Volver</button>
+
+</div> 

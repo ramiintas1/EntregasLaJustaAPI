@@ -1,0 +1,149 @@
+<div class="container" ALIGN="right" >
+  <button style="margin:10px" type="button" class="btn btn-dark"  routerLink= "/login" (click)=cerrarSesion() >Cerrar Sesion</button>
+</div>
+<div class="container">
+    <div style="margin:10px" *ngIf="entrega" ALIGN="center">
+
+      <h4>Datos del Pedido</h4>
+
+      <div class="row g-3 align-items-center">
+        <div class="col">
+          <h5>Zona:</h5> 
+        </div>
+        <div class="col">
+            <h6>{{entrega.zona}}</h6>
+        </div>
+      </div>
+      <div class="row g-3 align-items-center">
+        <div class="col">
+          <h5>Repartidor:</h5> 
+        </div>
+        <div class="col">
+          <h6>{{entrega.dniRepartidor}}</h6>
+        </div>
+      </div>
+      <div class="row g-3 align-items-center">
+        <div class="col">
+          <h5>Pedido:</h5> 
+        </div>
+        <div class="col">
+          <h6>{{entrega.pedido}}</h6>
+        </div>
+      </div>
+      <div class="row g-3 align-items-center">
+        <div class="col">
+          <h5>Fecha:</h5> 
+        </div>
+        <div class="col">
+          <h6>{{entrega.fecha}}</h6>
+        </div>
+      </div>
+      <div class="row g-3 align-items-center">
+        <div class="col">
+          <h5>Motivo:</h5> 
+        </div>
+        <div class="col">
+          <h6>{{entrega.motivo}}</h6>
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-striped table-hover">
+      <thead>
+          <tr>
+          <th scope="col"><p ALIGN="center">Estados</p></th>
+          </tr>
+      </thead>
+      <tbody *ngFor='let transicion of transiciones'>
+          <td><p ALIGN="center" *ngIf='entrega.id === transicion.entrega'>{{transicion.actual}}</p></td>
+      </tbody>
+    </table>
+
+    <div class="container" ALIGN="center">
+      <button  style="margin:10px" type="button" class="btn btn-success" (click)="obtenerPedido()">Ver Datos Pedido</button>
+    </div>
+
+    <div *ngIf="pedido">
+      
+      <div style="margin:10px" class="row g-3 align-items-center" ALIGN="center">
+        <div class="col">
+          <h5>Latitud:</h5> 
+        </div>
+        <div class="col">
+          <h6>{{pedido.latitud}}</h6>
+        </div>
+      </div>
+      <div style="margin:10px" class="row g-3 align-items-center" ALIGN="center">
+        <div class="col">
+          <h5>Longitud:</h5> 
+        </div>
+        <div class="col">
+          <h6>{{pedido.longitud}}</h6>
+        </div>
+      </div>
+      <div style="margin:10px" class="row g-3 align-items-center" ALIGN="center">
+        <div class="col">
+          <h5>Calle:</h5> 
+        </div>
+        <div class="col">
+          <h6>{{pedido.calle}}</h6>
+        </div>
+      </div>
+      <div style="margin:10px" class="row g-3 align-items-center" ALIGN="center">
+        <div class="col">
+          <h5>Entre Calles:</h5> 
+        </div>
+        <div class="col">
+          <h6>{{pedido.entreCalles}}</h6>
+        </div>
+      </div>
+      <div style="margin:10px" class="row g-3 align-items-center" ALIGN="center">
+        <div class="col">
+          <h5>Numero:</h5> 
+        </div>
+        <div class="col">
+          <h6>{{pedido.numero}}</h6>
+        </div>
+      </div>
+      <div style="margin:10px" class="row g-3 align-items-center" ALIGN="center">
+        <div class="col">
+          <h5>Departamento:</h5> 
+        </div>
+        <div class="col">
+          <h6>{{pedido.departamento}}</h6>
+        </div>
+      </div>
+      <div style="margin:10px" class="row g-3 align-items-center" ALIGN="center">
+        <div class="col">
+          <h5>Monto:</h5> 
+        </div>
+        <div class="col">
+          <h6>{{pedido.monto}}</h6>
+        </div>
+      </div>
+      
+    <div class="container" ALIGN="center">
+      <div class="row">
+        <div class="col">
+          <button  style="margin:10px" type="button" class="btn btn-success" (click)="onSubmit1()" *ngIf='rol === "Repartidor"' [disabled]="pedido.entregado">Entregado!</button>
+        </div>
+        <div class="col">
+          <button  style="margin:10px" type="button" class="btn btn-warning" routerLink="/updateEntrega/{{entrega.id}}" *ngIf='rol === "Repartidor"' [disabled]="pedido.entregado">Reprogramar Entrega</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" ALIGN="center">
+    <button style="margin:10px" type="button" class="btn btn-dark" (click)="onVerUbi()">Ver Ubicacion en el mapa</button>
+  </div>
+  <div class="container" id="mapa-mapbox2"></div> 
+            
+
+  <button style="margin:10px" type="button" class="btn btn-dark" (click)="goBack()">Volver</button>
+
+      <!--<button style="margin:10px" type="button" class="btn btn-dark" (click)="token()">Token</button>
+      <button style="margin:10px" type="button" class="btn btn-dark" (click)="obtenerPedido()">Obtener</button>
+      <button style="margin:10px" type="button" class="btn btn-dark" (click)="save()">Entregado</button>-->
+</div>
+

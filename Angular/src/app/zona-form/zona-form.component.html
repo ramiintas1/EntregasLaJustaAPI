@@ -1,0 +1,58 @@
+<div class="container" ALIGN="right" >
+    <button style="margin:10px" type="button" class="btn btn-dark"  routerLink= "/login" (click)=cerrarSesion() >Cerrar Sesion</button>
+</div>
+<div class="container">
+    <!--Barra de navegacion-->
+    <nav class="navbar navbar-dark bg-dark" style=" border-radius: 15px;">
+        <a class="nav-link" style="color: aliceblue;" routerLink= "/dashboard">Inicio</a>
+        <a class="nav-link" style="color: aliceblue;" routerLink= "/pedidos">Pedidos</a>
+        <a class="nav-link" style="color: aliceblue;" routerLink= "/repartidores">Repartidores</a>
+        <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarRepartidor">Agregar Repartidor</a>
+        <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarZona">Agregar Zona</a>
+        <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarVehiculo">Agregar Vehiculo</a>
+    </nav>
+</div>  
+<div class="container">
+    <form (ngSubmit)="onSubmit(zonaForm)" #zonaForm="ngForm">
+
+        <div class="form-group">
+            <label for="barrio">Barrio</label>
+            <input type="text" class="form-control" id="barrio"
+            required
+            [(ngModel)]="zona.barrio" name="barrio">
+        </div>
+        <div class="form-group">
+            <label for="desdeLat">Desde Latitud</label>
+            <input type="number" class="form-control" id="desdeLat"
+            required
+            [(ngModel)]="zona.desdeLat" name="desdeLat">
+        </div>
+        <div class="form-group">
+            <label for="hastaLat">Hasta Latitud</label>
+            <input type="number" class="form-control" id="hastaLat"
+            required
+            [(ngModel)]="zona.hastaLat" name="hastaLat">
+        </div>
+        <div class="form-group">
+            <label for="desdeLong">Desde Longitud</label>
+            <input type="number" class="form-control" id="desdeLong"
+            required
+            [(ngModel)]="zona.desdeLong" name="desdeLong">
+        </div>
+        <div class="form-group">
+            <label for="hastaLong">Hasta Longitud</label>
+            <input type="number" class="form-control" id="hastaLong"
+            required
+            [(ngModel)]="zona.hastaLong" name="hastaLong">
+        </div>
+
+        <button style="margin:10px" type="submit" class="btn btn-success"
+        [disabled]="!zonaForm.form.valid">Guardar</button>
+
+    </form>
+
+    <button style="margin:10px" type="button" class="btn btn-dark" (click)="goBack()">Volver</button>
+    <br>
+    <button style="margin:10px" type="button" class="btn btn-dark"  routerLink="/zonas">Zonas</button>
+
+</div> 

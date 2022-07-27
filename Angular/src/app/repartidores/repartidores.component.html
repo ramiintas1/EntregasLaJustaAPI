@@ -1,0 +1,40 @@
+<div class="container" ALIGN="right" >
+  <button style="margin:10px" type="button" class="btn btn-dark"  routerLink= "/login" (click)=cerrarSesion() >Cerrar Sesion</button>
+</div>
+<div class="container">
+  <!--Barra de navegacion-->
+  <nav class="navbar navbar-dark bg-dark" style=" border-radius: 15px;">
+    <a class="nav-link" style="color: aliceblue;" routerLink= "/dashboard">Inicio</a>
+    <a class="nav-link" style="color: aliceblue;" routerLink= "/pedidos">Pedidos</a>
+    <a class="nav-link" style="color: aliceblue;" routerLink= "/repartidores">Repartidores</a>
+    <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarRepartidor">Agregar Repartidor</a>
+    <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarZona">Agregar Zona</a>
+    <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarVehiculo">Agregar Vehiculo</a>
+  </nav>
+</div>  
+<div class=container >
+  <input style="margin:10px" type="text" class="form-control" name= "filterRep" placeholder="Buscar Repartidor (Nombre)" [(ngModel)]="filterRep">
+    <h2>Mis repartidores</h2>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+              <th scope="col"><p ALIGN="center">Nombre</p></th>
+              <th scope="col"><p ALIGN="center">Apellido</p></th>
+              <th scope="col"><p ALIGN="center">Vehiculo</p></th>
+              <th scope="col"><p ALIGN="center">Estado</p></th>
+              <th scope="col"><p ALIGN="center"> </p></th>
+            </tr>
+          </thead>
+          <tbody *ngFor='let repartidor of repartidores | filter:filterRep'>
+
+                    <td><p ALIGN="center">{{repartidor.nombre}}</p></td>
+                    <td><p ALIGN="center">{{repartidor.apellido}}</p></td>
+                    <td><p ALIGN="center">{{repartidor.vehiculo}}</p></td>
+                    <td><p ALIGN="center">{{repartidor.estado}}</p></td>
+                    <button  style="margin:10px" type="button" class="btn btn-primary"  routerLink="/detalle/{{repartidor.id}}">Detalle</button>
+                    <button  style="margin:10px" class="delete btn btn-danger" title="delete repartidor"(click)="delete(repartidor)">Eliminar</button>
+
+            </tbody>
+    </table>
+</div>

@@ -1,0 +1,40 @@
+<div class="container" ALIGN="right" >
+    <button style="margin:10px" type="button" class="btn btn-dark"  routerLink= "/login" (click)=cerrarSesion() >Cerrar Sesion</button>
+  </div>
+  <div class="container">
+    <!--Barra de navegacion-->
+    <nav class="navbar navbar-dark bg-dark" style=" border-radius: 15px;">
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/dashboard">Inicio</a>
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/pedidos">Pedidos</a>
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/repartidores">Repartidores</a>
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarRepartidor">Agregar Repartidor</a>
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarZona">Agregar Zona</a>
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarVehiculo">Agregar Vehiculo</a>
+    </nav>
+  </div>  
+  <div class=container >
+      <h2>Zonas:</h2>
+  
+      <table class="table table-striped table-hover">
+          <thead>
+              <tr>
+                <th scope="col"><p ALIGN="center">Barrio</p></th>
+                <th scope="col"><p ALIGN="center">Inicio Latitud</p></th>
+                <th scope="col"><p ALIGN="center">Fin Latitud</p></th>
+                <th scope="col"><p ALIGN="center">Inicio Longitud</p></th>
+                <th scope="col"><p ALIGN="center">Fin Longitud</p></th>
+                <th scope="col"><p ALIGN="center"> </p></th>
+              </tr>
+            </thead>
+            <tbody *ngFor='let zona of zonas'>
+  
+                      <th scope="row"><p ALIGN="center">{{zona.barrio}}</p></th>
+                      <td><p ALIGN="center">{{zona.desdeLat}}</p></td>
+                      <td><p ALIGN="center">{{zona.hastaLat}}</p></td>
+                      <td><p ALIGN="center">{{zona.desdeLong}}</p></td>
+                      <td><p ALIGN="center">{{zona.hastaLong}}</p></td>
+                      <button style="margin:10px" class="delete btn btn-danger" title="delete zona"(click)="delete(zona)">Eliminar</button>
+  
+              </tbody>
+      </table>
+  </div>

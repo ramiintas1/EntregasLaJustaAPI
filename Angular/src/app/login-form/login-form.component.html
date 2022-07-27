@@ -1,0 +1,37 @@
+<div class="container">
+    <body>
+        <div id= "formContent" class="container">
+            <form [formGroup]="loginForm" (ngSubmit)= "onLogin(loginForm.value)">
+                <input style="margin:10px" type="text" id="login" class="form-control"name="login" placeholder="usuario" formControlName="usuario">
+                <input style="margin:10px" type="password" id="contrasena" class="form-control" name="login" placeholder="contraseña" formControlName="contrasena">
+                <input style="margin:10px" type="submit" class="btn btn-dark" value="Log in">
+            </form>
+            <div class="alert alert-danger" *ngIf="errorStatus">
+                <p>{{errorMsj}}</p>  
+            </div>
+        </div>
+    </body>
+
+    <!--
+    <div class="container" ALIGN="right" >
+        <button style="margin:10px" type="button" class="btn btn-dark" (click)=token() >TOKEN</button>
+    </div>
+    -->
+    
+    <div class="input-group mb-3 container">
+        
+            <input type="text" name="id" #id class="form-control" placeholder="Consultar Pedido (Codigo)" aria-label="Consultar Pedido (Codigo)" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="obtenerPedido(+id.value)">Buscar</button>
+            <!--(click)="buscarPedido(+id.value)"-->
+        <div *ngIf="pedido" class="container">
+            <div *ngIf="pedido.entregado">
+                <p>Su pedido ha sido Entregado</p>
+            </div>
+            <div *ngIf="!pedido.entregado">
+                <p>Su pedido sigue En Proceso</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

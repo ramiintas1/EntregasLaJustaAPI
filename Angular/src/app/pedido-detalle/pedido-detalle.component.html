@@ -1,0 +1,117 @@
+<div class="container" ALIGN="right" >
+    <button style="margin:10px" type="button" class="btn btn-dark"  routerLink= "/login" (click)=cerrarSesion() >Cerrar Sesion</button>
+</div>
+<div class="container">
+    
+    <div *ngIf="pedido">
+        <h2>Detalle</h2>
+ 
+        <div class="row g-3 align-items-center">
+            <div class="col">
+              <h5>Codigo:</h5> 
+            </div>
+            <div class="col">
+                <h6>{{pedido.id}}</h6>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col">
+              <h5>Dni Cliente:</h5> 
+            </div>
+            <div class="col">
+                <h6>{{pedido.dniCliente}}</h6>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col">
+              <h5>Nombre Cliente:</h5> 
+            </div>
+            <div class="col">
+                <h6>{{pedido.nombreCliente}}</h6>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col">
+              <h5>Calle:</h5> 
+            </div>
+            <div class="col">
+                <h6>{{pedido.calle}}</h6>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col">
+              <h5>Entre Calles:</h5> 
+            </div>
+            <div class="col">
+                <h6>{{pedido.entreCalles}}</h6>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col">
+              <h5>Numero:</h5> 
+            </div>
+            <div class="col">
+                <h6>{{pedido.numero}}</h6>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col">
+              <h5>Departamento:</h5> 
+            </div>
+            <div class="col">
+                <h6>{{pedido.departamento}}</h6>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col">
+              <h5>Latitud:</h5> 
+            </div>
+            <div class="col">
+                <h6>{{pedido.latitud}}</h6>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col">
+              <h5>Longitud:</h5> 
+            </div>
+            <div class="col">
+                <h6>{{pedido.longitud}}</h6>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col">
+              <h5>Observacion:</h5> 
+            </div>
+            <div class="col">
+                <h6>{{pedido.observacion}}</h6>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col">
+              <h5>Monto:</h5> 
+            </div>
+            <div class="col">
+                <h6>{{pedido.monto}}</h6>
+            </div>
+        </div>
+        
+                
+    </div>
+    
+    <h4>Productos</h4>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+            <th scope="col"><p ALIGN="center">Nombre</p></th>
+            <th scope="col"><p ALIGN="center">Cantidad</p></th>
+            <th scope="col"><p ALIGN="center">Valor</p></th>
+            </tr>
+        </thead>
+        <tbody *ngFor='let producto of pedido.productos'>
+                    <td><p ALIGN="center" *ngIf='producto.idPedido === pedido.id'>{{producto.nombre}}</p></td>
+                    <td><p ALIGN="center" *ngIf='producto.idPedido === pedido.id'>{{producto.stock}}</p></td>
+                    <td><p ALIGN="center" *ngIf='producto.idPedido === pedido.id'>{{producto.valor}}</p></td>
+        </tbody>
+    </table>
+    <button style="margin:10px" type="button" class="btn btn-dark" (click)="goBack()">Volver</button>
+</div>

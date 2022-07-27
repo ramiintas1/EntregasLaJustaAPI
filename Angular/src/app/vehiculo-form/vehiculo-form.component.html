@@ -1,0 +1,45 @@
+<div class="container" ALIGN="right" >
+    <button style="margin:10px" type="button" class="btn btn-dark"  routerLink= "/login" (click)=cerrarSesion() >Cerrar Sesion</button>
+</div>
+<div class="container">
+    <!--Barra de navegacion-->
+    <nav class="navbar navbar-dark bg-dark" style=" border-radius: 15px;">
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/dashboard">Inicio</a>
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/pedidos">Pedidos</a>
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/repartidores">Repartidores</a>
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarRepartidor">Agregar Repartidor</a>
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarZona">Agregar Zona</a>
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarVehiculo">Agregar Vehiculo</a>
+    </nav>
+</div>  
+<div class="container">
+    <form (ngSubmit)="onSubmit(vehiculoForm)" #vehiculoForm="ngForm">
+
+        <div class="form-group">
+            <label for="tipo">Tipo</label>
+            <input type="text" class="form-control" id="tipo"
+            required
+            [(ngModel)]="vehiculo.tipo" name="tipo">
+        </div>
+        <div class="form-group">
+            <label for="pesoMax">Peso maximo por vehiculo</label>
+            <input type="number" class="form-control" id="pesoMax"
+            required
+            [(ngModel)]="vehiculo.pesoMax" name="pesoMax">
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="combustible"
+            [(ngModel)]="vehiculo.combustible" name="combustible">
+            <label for="combustible">Requiere combustible</label>
+        </div>
+
+        <button style="margin:10px" type="submit" class="btn btn-success"
+        [disabled]="!vehiculoForm.form.valid">Guardar</button>
+
+    </form>
+
+    <button style="margin:10px" type="button" class="btn btn-dark" (click)="goBack()">Volver</button>
+    <br>
+    <button style="margin:10px" type="button" class="btn btn-dark"  routerLink="/vehiculos">Vehiculos</button>
+
+</div> 

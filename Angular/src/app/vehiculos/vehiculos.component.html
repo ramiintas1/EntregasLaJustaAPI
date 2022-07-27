@@ -1,0 +1,37 @@
+<div class="container" ALIGN="right" >
+    <button style="margin:10px" type="button" class="btn btn-dark"  routerLink= "/login" (click)=cerrarSesion() >Cerrar Sesion</button>
+  </div>
+  <div class="container">
+    <!--Barra de navegacion-->
+    <nav class="navbar navbar-dark bg-dark" style=" border-radius: 15px;">
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/dashboard">Inicio</a>
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/pedidos">Pedidos</a>
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/repartidores">Repartidores</a>
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarRepartidor">Agregar Repartidor</a>
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarZona">Agregar Zona</a>
+            <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarVehiculo">Agregar Vehiculo</a>
+    </nav>
+  </div>  
+  <div class=container >
+      <h2>Vehiculos:</h2>
+  
+      <table class="table table-striped table-hover">
+          <thead>
+              <tr>
+                <th scope="col"><p ALIGN="center">Tipo</p></th>
+                <th scope="col"><p ALIGN="center">Peso Maximo</p></th>
+                <th scope="col"><p ALIGN="center">Combustible</p></th>
+                <th scope="col"><p ALIGN="center"> </p></th>
+              </tr>
+            </thead>
+            <tbody *ngFor='let vehiculo of vehiculos'>
+  
+                      <th scope="row"><p ALIGN="center">{{vehiculo.tipo}}</p></th>
+                      <td><p ALIGN="center">{{vehiculo.pesoMax}}</p></td>
+                      <td><p ALIGN="center">{{vehiculo.combustible}}</p></td>
+                      <button style="margin:10px" class="delete btn btn-danger" title="delete vehiculo"(click)="delete(vehiculo)">Eliminar</button>
+  
+              </tbody>
+      </table>
+  </div>
+

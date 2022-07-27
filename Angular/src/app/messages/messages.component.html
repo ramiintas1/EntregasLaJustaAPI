@@ -1,0 +1,12 @@
+<footer>
+        <div class= container>
+                <div *ngIf="messageService.messages.length">
+
+                <h6>Mensajes</h6>
+                <button style="margin:10px" class="clear btn btn-dark"
+                        (click)="messageService.clear()">limpiar</button>
+                <div *ngFor='let message of messageService.messages'> {{message}} </div>
+                
+                </div>
+        </div>
+</footer>

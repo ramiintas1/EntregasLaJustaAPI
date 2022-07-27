@@ -1,0 +1,32 @@
+<div class="container" ALIGN="right" >
+  <button style="margin:10px" type="button" class="btn btn-dark"  routerLink= "/login" (click)=cerrarSesion() >Cerrar Sesion</button>
+</div>
+<div class="container">
+  <!--Barra de navegacion-->
+  <nav class="navbar navbar-dark bg-dark" style=" border-radius: 15px;">
+    <a class="nav-link" style="color: aliceblue;" routerLink= "/dashboard">Inicio</a>
+    <a class="nav-link" style="color: aliceblue;" routerLink= "/pedidos">Pedidos</a>
+    <a class="nav-link" style="color: aliceblue;" routerLink= "/repartidores">Repartidores</a>
+    <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarRepartidor">Agregar Repartidor</a>
+    <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarZona">Agregar Zona</a>
+    <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarVehiculo">Agregar Vehiculo</a>
+</nav>
+</div>  
+<div class=container >
+    <h2>Entregas</h2>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+              <th scope="col"><p ALIGN="center">dniRepartidor</p></th>
+              <th scope="col"><p ALIGN="center">zona</p></th>
+              <th scope="col"><p ALIGN="center">Pedido(id)</p></th>
+            </tr>
+          </thead>
+          <tbody *ngFor='let entrega of entregas'>
+                    <td><p ALIGN="center">{{entrega.dniRepartidor}}</p></td>
+                    <td><p ALIGN="center">{{entrega.zona}}</p></td>
+                    <td><p ALIGN="center">{{entrega.pedido}}</p></td>
+            </tbody>
+    </table>
+</div>

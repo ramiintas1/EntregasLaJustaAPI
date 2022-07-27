@@ -1,0 +1,95 @@
+<div class="container" ALIGN="right" >
+    <button style="margin:10px" type="button" class="btn btn-dark"  routerLink= "/login" (click)=cerrarSesion() >Cerrar Sesion</button>
+</div>
+<div class="container">
+    <!--Barra de navegacion-->
+    <nav class="navbar navbar-dark bg-dark" style=" border-radius: 15px;">
+      <a class="nav-link" style="color: aliceblue;" routerLink= "/dashboard">Inicio</a>
+      <a class="nav-link" style="color: aliceblue;" routerLink= "/pedidos">Pedidos</a>
+      <a class="nav-link" style="color: aliceblue;" routerLink= "/repartidores">Repartidores</a>
+      <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarRepartidor">Agregar Repartidor</a>
+      <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarZona">Agregar Zona</a>
+      <a class="nav-link" style="color: aliceblue;" routerLink= "/agregarVehiculo">Agregar Vehiculo</a>
+  </nav>
+  </div>  
+<div class="container">
+    <h2>Asignar Entrega </h2>
+
+    <form (ngSubmit)="onSubmit(entregaForm)" #entregaForm="ngForm">
+            <div class="form-group">
+                <label for="dniRepartidor">Dni de Repartidor</label>
+                <select class="form-select" aria-label="Repartidor" id="dniRepartidor" name="dniRepartidor" [(ngModel)]="entrega.dniRepartidor" required>
+                    <ng-container *ngFor='let repartidor of repartidores'>
+                        <option  *ngIf='repartidor.estado === "Disponible"' [value]="repartidor.dni">{{repartidor.dni}} - {{repartidor.nombre}} {{repartidor.apellido}} - {{repartidor.zona}}</option>
+                    </ng-container>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="estado">Zona</label>
+                <select class="form-select" aria-label="zona" id="zona" name="zona" [(ngModel)]="entrega.zona" required>
+                    <option *ngFor='let zona of zonas' [value]="zona.barrio">{{zona.barrio}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="estado">Estado</label>
+                <select class="form-select" aria-label="estado" id="estado" name="estado" [(ngModel)]="entrega.estado" required>
+                    <option *ngFor='let estado of estados' [value]="estado.nombre">{{estado.nombre}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fecha">Fecha</label>
+                <input type="date" class="form-control" id="fecha"
+                required
+                [(ngModel)]="entrega.fecha" name="fecha" placeholder="DD/MM/YY">
+            </div>
+            <div class="form-group">
+                <label for="motivo">Motivo</label>
+                <input type="text" class="form-control" id="motivo"
+                required
+                [(ngModel)]="entrega.motivo" name="motivo" placeholder="Inicio de Entrega">
+            </div>
+            <div class="form-group">
+                <label for="pedido">Pedido</label>              
+                <select class="form-select" aria-label="Pedido" name="pedido" id="pedido" required [(ngModel)]="entrega.pedido" [disabled]="true">
+                    <ng-container *ngFor='let pedidoElegido of pedidos'>
+                        <option *ngIf='!pedidoElegido.entrega' [value]="pedidoElegido.id">CODIGO: {{pedidoElegido.id}} CALLE: {{pedidoElegido.calle}} ENTRE: {{pedidoElegido.entreCalles}} N°: {{pedidoElegido.numero}} - {{pedidoElegido.idJusta}}</option>
+                    </ng-container>
+                </select>
+            </div>
+            <br>
+            <span id="PedidoSeleccionado"></span>
+
+           <button style="margin:10px" type="submit" class="btn btn-success"
+            [disabled]="!entregaForm.form.valid">Hecho</button>
+    </form>
+
+    <a style="margin:10px" type="button" class="btn btn-dark"  routerLink="/entregas">Entregas</a>
+
+    <div class="row">
+        <div class="col">
+            <div class="container" id="mapa-mapbox"></div>
+        </div>
+        <div class="col">       
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col"><p ALIGN="center">Codigo</p></th>
+                    <th scope="col"><p ALIGN="center">Calle</p></th>
+                    <th scope="col"><p ALIGN="center">Entre Calles</p></th>
+                    <th scope="col"><p ALIGN="center"> </p></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor='let pedido of pedidos | slice:0:10;' (click)="onSelect(pedido)">
+                            <td scope="row" *ngIf='asignada(pedido.id)'><p ALIGN="center">{{pedido.id}}</p></td>
+                            <td><p ALIGN="center" *ngIf='asignada(pedido.id)'>{{pedido.calle}}</p></td>
+                            <td><p ALIGN="center" *ngIf='asignada(pedido.id)'>{{pedido.entreCalles}}</p></td>
+                            <button style="margin:10px" type="button" class="btn btn-primary"  routerLink="/detallePedido/{{pedido.id}}" *ngIf='asignada(pedido.id)'>Detalle</button>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+
+
+</div>

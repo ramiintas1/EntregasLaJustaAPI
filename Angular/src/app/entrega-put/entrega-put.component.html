@@ -1,0 +1,26 @@
+<div class="container" ALIGN="right" >
+    <button style="margin:10px" type="button" class="btn btn-dark"  routerLink= "/login" (click)=cerrarSesion() >Cerrar Sesion</button>
+</div>
+<div class="container">
+    <div *ngIf="entrega">
+        <div class="row g-3 align-items-center">
+            <div class="col">
+                <label for="fecha">Nueva fecha:</label>
+            </div>
+            <div class="col">
+                <input id="fecha" type="date" class="form-control" [(ngModel)]="entrega.fecha" placeholder="Nueva fecha">
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col">
+                <label for="motivo">Motivo de Reprogramacion:</label>
+            </div>
+            <div class="col">
+                <input id="motivo" type="text" class="form-control" [(ngModel)]="entrega.motivo" placeholder="Motivo">
+            </div>
+        </div>
+    </div>
+    <button style="margin:10px" type="button" class="btn btn-success" (click)="onSubmit()">Hecho</button>
+    <br>
+    <button style="margin:10px" type="button" class="btn btn-dark" (click)="goBack()">Volver</button>
+</div>

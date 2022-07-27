@@ -1,0 +1,13 @@
+<div id="search-component">
+    <!--<h4><label for="search-box">Buscar Repartidor</label></h4>-->
+  
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="Buscar repartidor" class="form-control" style="margin:10px" />
+  
+    <ul class="search-result">
+      <li *ngFor="let repartidor of repartidores$ | async" >
+        <a routerLink="/detalle/{{repartidor.id}}">
+          {{repartidor.id}}
+        </a>
+      </li>
+    </ul>
+  </div>
